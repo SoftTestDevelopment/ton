@@ -34,8 +34,9 @@ jobs:
         run: |
           cd zlib\contrib\vstudio\vc14
           msbuild zlibstat.vcxproj /p:Configuration=ReleaseWithoutAsm /p:platform=x64 -p:PlatformToolset=v142
+
       - name: Install precompiled OpenSSL Win64
-        run: |                    
+        run: |
           curl  -Lo openssl-1.1.1o.zip https://github.com/neodiX42/precompiled-openssl-win64/raw/main/openssl-1.1.1o.zip
           jar xf openssl-1.1.1o.zip
 
