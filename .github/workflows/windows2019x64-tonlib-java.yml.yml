@@ -36,9 +36,11 @@ jobs:
 
       - name: Install precompiled OpenSSL Win64
         run: |          
+          mkdir openssl-1.1
+          cd openssl-1.1
           curl -o openssl-1.1.1o.zip https://mirror.firedaemon.com/OpenSSL/openssl-1.1.1o.zip
           jar xf openssl-1.1.1o.zip
-          ls 
+          ls
           ls openssl-1.1
       - name: Configure
         run: |
@@ -46,7 +48,7 @@ jobs:
           echo %root%
           mkdir build
           cd build
-          cmake -DZLIB_FOUND=1 -DZLIB_INCLUDE_DIR=%root%\zlib -DZLIB_LIBRARY=%root%\zlib\contrib\vstudio\vc14\x64\ZlibStatReleaseWithoutAsm\zlibstat.lib -DOPENSSL_FOUND=1 -DOPENSSL_INCLUDE_DIR=$root/openssl-1.1/x64/include -DOPENSSL_CRYPTO_LIBRARY=$root/openssl-1.1/x64/lib/libcrypto.lib -DCMAKE_CXX_FLAGS="/DTD_WINDOWS=1 /EHsc /bigobj /W0" ..
+          cmake -DZLIB_FOUND=1 -DZLIB_INCLUDE_DIR=%root%\zlib -DZLIB_LIBRARY=%root%\zlib\contrib\vstudio\vc14\x64\ZlibStatReleaseWithoutAsm\zlibstat.lib -DOPENSSL_FOUND=1 -DOPENSSL_INCLUDE_DIR=%root%/openssl-1.1/x64/include -DOPENSSL_CRYPTO_LIBRARY=%root%/openssl-1.1/x64/lib/libcrypto.lib -DCMAKE_CXX_FLAGS="/DTD_WINDOWS=1 /EHsc /bigobj /W0" ..
 
       - name: Build
         run: |       
