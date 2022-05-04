@@ -33,17 +33,20 @@ jobs:
         run: |
           cd zlib\contrib\vstudio\vc14
           msbuild zlibstat.vcxproj /p:Configuration=ReleaseWithoutAsm /p:platform=x64 -p:PlatformToolset=v142
-      - name: Install OpenSSL Win64
-        run: |
-          curl -o openssl.msi https://slproweb.com/download/Win64OpenSSL-1_1_1n.msi
-          msiexec /i openssl.msi /quiet /qn /norestart
+
+      - name: Install precompiled OpenSSL Win64
+        run: |          
+          curl -o openssl-1.1.1o.zip https://mirror.firedaemon.com/OpenSSL/openssl-1.1.1o.zip
+          jar xf openssl-1.1.1o.zip
+
       - name: Configure
         run: |
           set root=%cd%
           echo %root%
           mkdir build
           cd build
-          cmake -DZLIB_FOUND=1 -DZLIB_INCLUDE_DIR=%root%\zlib -DZLIB_LIBRARY=%root%\zlib\contrib\vstudio\vc14\x64\ZlibStatReleaseWithoutAsm\zlibstat.lib -DCMAKE_CXX_FLAGS="/DTD_WINDOWS=1 /EHsc /bigobj /W0" ..
+          cmake -DZLIB_FOUND=1 -DZLIB_INCLUDE_DIR=%root%\zlib -DZLIB_LIBRARY=%root%\zlib\contrib\vstudio\vc14\x64\ZlibStatReleaseWithoutAsm\zlibstat.lib -DOPENSSL_FOUND=1 -DOPENSSL_INCLUDE_DIR=$rootPath/openssl-1.1/x64/include -DOPENSSL_CRYPTO_LIBRARY=$rootPath/openssl-1.1/x64/lib/libcrypto.lib -DCMAKE_CXX_FLAGS="/DTD_WINDOWS=1 /EHsc /bigobj /W0" ..
+
       - name: Build
         run: |       
           cd build   
