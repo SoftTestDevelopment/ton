@@ -57,6 +57,9 @@ jobs:
           set JAVA_AWT_INCLUDE_PATH=${JAVA_HOME}/include
           set JAVA_INCLUDE_PATH2=${JAVA_HOME}/include/win32
           
+          set root=%cd%
+          echo %root%
+          
           cd example/android/
           mkdir build
           cd build
