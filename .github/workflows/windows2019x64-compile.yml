@@ -37,8 +37,8 @@ jobs:
 
       - name: Install Precompiled OpenSSL Win64
         run: |          
-          curl -o openssl-1.1.1o.zip https://mirror.firedaemon.com/OpenSSL/openssl-1.1.1o.zip
-          jar xf openssl-1.1.1o.zip       
+          curl -o openssl-1.1.1o.zip https://github.com/neodiX42/precompiled-openssl-win64/raw/main/openssl-1.1.1o.zip
+          jar xf openssl-1.1.1o.zip
 
       - name: Configure
         run: |
