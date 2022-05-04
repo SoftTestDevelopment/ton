@@ -33,7 +33,6 @@ jobs:
       - name: Compile zlib Win64
         run: |
           cd zlib\contrib\vstudio\vc14
-          msbuild zlibstat.vcxproj /p:Configuration=Debug /p:platform=x64 -p:PlatformToolset=v142
           msbuild zlibstat.vcxproj /p:Configuration=ReleaseWithoutAsm /p:platform=x64 -p:PlatformToolset=v142
 
       - name: Install precompiled OpenSSL Win64
