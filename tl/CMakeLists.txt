@@ -15,7 +15,7 @@ add_library(tl_api STATIC
 	tl/tl_object_store.h 
 	tl/TlObject.h)
 add_dependencies(tl_api tl_generate_common)
-target_link_libraries(tl_api tdutils ${JAVA_JVM_LIBRARY}))
+target_link_libraries(tl_api tdutils ${JAVA_JVM_LIBRARY})
 target_include_directories(tl_api PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
