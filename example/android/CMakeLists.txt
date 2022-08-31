@@ -12,11 +12,9 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 else()
   string(APPEND CMAKE_CXX_FLAGS " -std=c++14 -Wall -Wextra -Wno-unused-parameter -Wno-deprecated-declarations -Wconversion -Wno-sign-conversion -fno-omit-frame-pointer -ffunction-sections -fdata-sections")
 endif()
-
 if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
   string(APPEND CMAKE_SHARED_LINKER_FLAGS " -Wl,--gc-sections -Wl,--exclude-libs,ALL")
 endif()
-
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
 # You can define multiple libraries, and CMake builds them for you.
